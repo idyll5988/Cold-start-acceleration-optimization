@@ -64,15 +64,11 @@ function optimize_app_startup() {
         echo "$date *应用不包含目标Activity $package*" >>优先.log
     fi
 }
-while true; do
 cd ${MODDIR}/ll/log
 log
-screen_status=$(dumpsys window | grep "mScreenOn" | grep true)
-if [[ "${screen_status}" ]]; then
 # 主程序
 get_all_packages
 for package in "${all_packages[@]}"; do
     optimize_app_startup "$package" >>优先.log
 done
-fi	
-done
+
