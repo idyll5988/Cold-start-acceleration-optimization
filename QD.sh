@@ -24,7 +24,7 @@ function get_all_packages() {
 }
 # 定义启动Activity类名
 main_activity_class=".MainActivity"
-# 设置CPU最高优先级（可能需要root权限）
+# 设置CPU最高优先级
 function set_cpu_priority() {
     for package in "${all_packages[@]}"; do
         pid=$(top -n 1 | grep "$package" | grep -v grep | awk '{print $2}')
