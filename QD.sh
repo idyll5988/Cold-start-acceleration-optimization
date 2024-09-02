@@ -66,7 +66,12 @@ function optimize_app_startup() {
 }
 cd ${MODDIR}/ll/log
 log
+# 清理后台进程和服务以释放内存
+function clean_background_processes() {
+am kill-all
+}
 # 主程序
+clean_background_processes
 get_all_packages
 for package in "${all_packages[@]}"; do
     optimize_app_startup "$package" >>优先.log
