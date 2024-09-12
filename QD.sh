@@ -19,7 +19,7 @@ function log() {
     fi
 }
 function get_all_packages() {
-    all_packages=($(pm list packages | awk -F: '{print $2}'))
+    all_packages=($(pm list packages -f | awk -F: '/com.android|android/ {next} {print $2}'))
 }
 main_activity_class=".MainActivity"
 function set_cpu_priority() {
